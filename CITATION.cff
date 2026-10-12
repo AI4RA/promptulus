@@ -4,7 +4,7 @@ title: "Promptulus: AI Literacy Companions"
 type: software
 date-released: 2026-10-12
 license: Apache-2.0
-repository-code: "https://github.com/nate-layman/promptulus"
+repository-code: "https://github.com/AI4RA/promptulus"
 authors:
   - family-names: Layman
     given-names: Nathan
