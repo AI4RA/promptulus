@@ -1,10 +1,10 @@
 # AI Literacy Companions
 
-An interactive Shiny app that teaches fundamental skills for working with AI through a cast of animal characters. Each character focuses on one discipline — from deciding whether to use AI at all, to crafting effective prompts, to evaluating the results.
+An interactive Shiny app that teaches fundamental skills for working with AI through a cast of animal characters. Each character focuses on one discipline - from deciding whether to use AI at all, to crafting effective prompts, to evaluating the results.
 
 ## Live Demo
 
-Visit the deployed app: [https://n8-layman.shinyapps.io/promptulus/](https://n8-layman.shinyapps.io/promptulus/)
+Visit the deployed app: [https://ai4ra.github.io/promptulus/](https://ai4ra.github.io/promptulus/)
 
 ## Characters
 
