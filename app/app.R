@@ -39,7 +39,7 @@ character_config <- list(
     sidebar_description = HTML(
       "<p>Sequita helps you determine whether <strong>auditability</strong> matters for your task.</p>
       <p>The key question: <em>Do you need to understand the cause, or just the effect?</em></p>
-      <p>Think of it like forecasting: sometimes you need to know <em>why</em> a prediction was right: what assumptions were made, whether the reasoning holds for new situations. Other times you just need an accurate forecast and the inner workings don't matter.</p>
+      <p>Think of two tasks on one desk: an auditor will ask exactly how an effort percentage was calculated, but nobody asks how a reference list was formatted, only whether it is correct.</p>
       <p>Type your task description, click Send, and the squirrel will:</p>
       <ul>
         <li>Assess whether your task needs high or low auditability</li>
@@ -69,7 +69,7 @@ character_config <- list(
       "<p>Modulus helps you break down complex prompts into modular workflows.</p>
       <p>Type your prompt in the text box, click Send, and the crab will:</p>
       <ul>
-        <li>Rate your prompt with 1-5 shrimp (5 = perfect discrete chunk, 1 = too complex)</li>
+        <li>Rate your decomposition with 1-5 shrimp (5 = split exactly where checks belong, or one prompt that needs none; 1 = no usable split points)</li>
         <li>Identify where complexity emerges</li>
         <li>Suggest how to modularize your task into manageable steps</li>
       </ul>
@@ -78,7 +78,7 @@ character_config <- list(
     active = TRUE,
     phase = "before",
     skill_label = "How do I break this down?",
-    skill_description = "Decomposition: Complex tasks overwhelm AI. Breaking them into steps gets better results and lets you catch errors early.",
+    skill_description = "Decomposition: Breaking big tasks into steps lets you check each piece before the next one starts. Sometimes one prompt is enough.",
     name_origin = "From Latin 'modulus' (small measure), breaking big problems into measured pieces"
   ),
   # --- DURING AI (Context Window Disciplines) ---
@@ -183,7 +183,7 @@ character_config <- list(
     sidebar_title = "About Dialogos",
     sidebar_description = HTML(
       "<p>Dialogos teaches you to manage <strong>multi-turn conversations</strong> with AI.</p>
-      <p>The key insight: every message stays in the AI's memory, and old instructions compete with new ones.</p>
+      <p>The key insight: the AI sees the conversation history up to a limit (past that, tools summarize or drop it), and old instructions compete with new ones.</p>
       <p>Type your task description, click Send, and the parrot will help you think about:</p>
       <ul>
         <li>Whether to continue a conversation or start fresh</li>
@@ -205,8 +205,8 @@ character_config <- list(
     image = "frog.png",
     gear = NULL,
     gear_class = NULL,
-    input_placeholder = "Ask me about how AI models work, environmental impact, data privacy, or anything else you're curious about...",
-    greeting = "Hello! I am Vitrea. Ask me about how AI models actually work - tokenization, prediction, environmental impact, where your data goes, or anything else you're curious about. I'll explain it in plain language. Click the arrow to my right for more information.",
+    input_placeholder = "Ask me how AI models work, where your data goes, why AI makes things up, or anything else you're curious about...",
+    greeting = "Hello! I am Vitrea. Ask me about how AI models actually work - tokenization, prediction, where your data goes, why it invents citations, or anything else you're curious about. I'll explain it in plain language. Click the arrow to my right for more information.",
     principles_file = "ai_transparency_principles.md",
     system_prompt_file = "vitrea_system_prompt.md",
     rating_icon = "none",
@@ -219,7 +219,7 @@ character_config <- list(
         <li>How models turn text into tokens and predict responses</li>
         <li>Why AI can sound confident while being completely wrong</li>
         <li>Where your data goes when you use AI tools</li>
-        <li>The environmental impact of AI use</li>
+        <li>What sponsors and privacy rules allow, plus environmental impact</li>
         <li>Open vs closed models, bias, and reasoning</li>
       </ul>
       <p>Ask whatever you're curious about - Vitrea will point you to resources for deeper exploration.</p>"
@@ -248,7 +248,7 @@ character_config <- list(
       <p>Type your task description, click Send, and the raccoon will help you think about:</p>
       <ul>
         <li>How to verify facts vs just checking fluency</li>
-        <li>Where to watch for hallucinations</li>
+        <li>Why links and long reference lists are not verification</li>
         <li>How to match evaluation rigor to stakes</li>
       </ul>
       <p>Describe different tasks to explore how evaluation needs change across your work.</p>"
@@ -273,10 +273,10 @@ character_config <- list(
     sidebar_title = "About Clarion",
     sidebar_description = HTML(
       "<p>Clarion helps you <strong>document, report, and build accountability</strong> for your AI-assisted work.</p>
-      <p>The key insight: documentation isn't just good practice - it's your protection. If something goes wrong but you followed your institution's guidelines and recorded your process, you have evidence of due diligence. Undocumented work can't be defended, improved, or replicated.</p>
+      <p>The key insight: as of October 2026 most sponsors expect AI use to be disclosed, and disclosure does not make AI-written content acceptable. What protects you is the record: prompts, inputs, and checks you can produce if a question comes later. Undocumented work can't be defended, improved, or replicated.</p>
       <p>Type your task description, click Send, and the whale will help you think about:</p>
       <ul>
-        <li>What to disclose about AI use and when</li>
+        <li>Which sponsor rule applies and where the statement goes</li>
         <li>How to document prompts, context, and changes</li>
         <li>Matching documentation depth to stakes</li>
         <li>Building a paper trail that demonstrates responsible use</li>
@@ -286,7 +286,7 @@ character_config <- list(
     active = TRUE,
     phase = "after",
     skill_label = "Can I explain what I did?",
-    skill_description = "Accountability: Clarion teaches the white whale of AI skills: documenting what you've done well enough that your work can be reproduced. Documenting what you did also protects you. If something goes wrong but you followed guidelines and recorded your process you have a paper trail showing due diligence.",
+    skill_description = "Accountability: Clarion teaches the white whale of AI skills: documenting what you've done well enough that your work can be reproduced. Most sponsors now expect AI use to be disclosed, and disclosure alone is not a defense, but a kept record of prompts, inputs, and checks is the paper trail you can stand behind.",
     name_origin = "From Latin 'clarus' (clear) + clarion (a trumpet), broadcasting findings so they can't be missed"
   )
 )
