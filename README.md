@@ -1,10 +1,10 @@
 # AI Literacy Companions
 
-An interactive app that teaches fundamental skills for working with AI through a cast of animal characters. Each character focuses on one discipline - from deciding whether to use AI at all, to crafting effective prompts, to evaluating and reporting the results. It was built for research administrators, and the examples speak their language.
+An interactive Shiny app that teaches fundamental skills for working with AI through a cast of animal characters. Each character focuses on one discipline - from deciding whether to use AI at all, to crafting effective prompts, to evaluating the results.
 
 ## Live Demo
 
-Visit the deployed app: [https://n8-layman.shinyapps.io/promptulus/](https://n8-layman.shinyapps.io/promptulus/)
+Visit the deployed app: [https://ai4ra.github.io/promptulus/](https://ai4ra.github.io/promptulus/)
 
 ## Characters
 
@@ -139,6 +139,14 @@ Both versions work with Google's free Gemini API tier. Free-tier limits vary by 
 
 Contributions welcome! See [Issues](../../issues) for current plans.
 
+By submitting a contribution you agree that it will be licensed under the [Apache License, Version 2.0](LICENSE), the same license as the project, and you represent that you have the right to license it under those terms. Contributions keep the attribution in [NOTICE](NOTICE) intact.
+
 ## License
 
-[Add your license here]
+Copyright 2025 Nathan Layman.
+
+Licensed under the [Apache License, Version 2.0](LICENSE). The [NOTICE](NOTICE) file carries four attributions: Nathan Layman as the author, the University of Idaho, the AI4RA project, and the National Science Foundation award that funded the work. Under Section 4(d) of the license, anyone who redistributes this software or a derivative work must keep all four. To cite the project, use [CITATION.cff](CITATION.cff).
+
+## Acknowledgments
+
+Promptulus: AI Literacy Companions is a project of [AI4RA](https://github.com/AI4RA) at the University of Idaho. This material is based upon work supported by the National Science Foundation under the GRANTED program, [NSF Award #2427549](https://www.nsf.gov/awardsearch/show-award?AWD_ID=2427549), "Crossing the Innovation Valley of Death: Democratizing Data and Artificial Intelligence for Research Administration." Any opinions, findings, conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the National Science Foundation.
