@@ -42,3 +42,7 @@ temp/
 
 # Office documents (drafts do not belong in the repo)
 *.docx
+
+# Generated for the GitHub Pages site by scripts/sync_site.sh (source of truth is app/)
+docs/content/
+docs/images/
