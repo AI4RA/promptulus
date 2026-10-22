@@ -39,3 +39,6 @@ temp/
 
 .claude/**
 **/.DS_Store
+
+# Office documents (drafts do not belong in the repo)
+*.docx
