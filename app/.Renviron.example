@@ -1,0 +1,2 @@
+# Copy to app/.Renviron and fill in your key. Deployed with the app to shinyapps.io; .Renviron is gitignored.
+GEMINI_API_KEY=your_api_key_here
