@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - 'docs/**'
+      - 'app/*.md'
+      - 'app/www/**'
+      - 'scripts/sync_site.sh'
+      - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -27,6 +31,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - name: Copy character content and artwork from the app
+        run: |
+          set -euo pipefail
+          scripts/sync_site.sh
+          test "$(ls docs/content/*.md | wc -l)" -ge 18
+          test "$(ls docs/images/*.png | wc -l)" -ge 14
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

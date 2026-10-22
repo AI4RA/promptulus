@@ -39,3 +39,7 @@ temp/
 
 .claude/**
 **/.DS_Store
+
+# Generated for the GitHub Pages site by scripts/sync_site.sh (source of truth is app/)
+docs/content/
+docs/images/

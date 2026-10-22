@@ -1,6 +1,6 @@
 # AI Literacy Companions
 
-An interactive Shiny app that teaches fundamental skills for working with AI through a cast of animal characters. Each character focuses on one discipline — from deciding whether to use AI at all, to crafting effective prompts, to evaluating the results.
+An interactive app that teaches fundamental skills for working with AI through a cast of animal characters. Each character focuses on one discipline - from deciding whether to use AI at all, to crafting effective prompts, to evaluating and reporting the results. It was built for research administrators, and the examples speak their language.
 
 ## Live Demo
 
@@ -13,32 +13,39 @@ The companions are organized into three workflow phases:
 ### Before AI: Planning
 | Character | Animal | Skill |
 |-----------|--------|-------|
-| **Sequita** | Squirrel | When to Use AI — assesses whether your task needs transparency and auditability, or whether a good answer is all that matters |
-| **Modulus** | Crab | Task Decomposition — breaks complex tasks into smaller, modular pieces that AI can handle well |
+| **Sequita** | Squirrel | When to Use AI - assesses whether your task needs auditability, or whether a good answer is all that matters |
+| **Modulus** | Crab | Task Decomposition - breaks complex tasks into pieces with checkpoints where a human should look |
 
 ### During AI: The Four I's
 | Character | Animal | Skill |
 |-----------|--------|-------|
-| **Telosa** | Turtle | Intent Engineering — helps you define clear goals, accountability, and escape hatches |
-| **Promptulus** | Owl | Prompt Engineering — reviews and improves your prompts using proven principles |
-| **Mnemos** | Elephant | Context Engineering — teaches what context to provide (and what to leave out) |
-| **Dialogos** | Parrot | Conversation Management — guides multi-turn interactions *(coming soon)* |
+| **Telosa** | Turtle | Intent Engineering - helps you define clear goals, success criteria, and handoff points |
+| **Promptulus** | Owl | Prompt Engineering - reviews and improves your prompts using proven principles |
+| **Mnemos** | Elephant | Context Engineering - teaches what context to provide (and what to leave out) |
+| **Dialogos** | Parrot | Conversation Management - guides multi-turn interactions |
+| **Vitrea** | Frog | AI Transparency - explains how AI tools work and where your data goes |
 
-### After AI: Quality & Reporting
+### After AI: Quality and Reporting
 | Character | Animal | Skill |
 |-----------|--------|-------|
-| **Veridex** | Raccoon | Evaluation — teaches how to assess AI outputs *(coming soon)* |
-| **Lucerna** | Firefly | Reporting — helps communicate AI-assisted work *(coming soon)* |
+| **Veridex** | Raccoon | Evaluation - teaches how to check AI outputs |
+| **Clarion** | Whale | Reporting - helps document and disclose AI-assisted work |
 
 **Octavius** the Octopus serves as the landing page mascot, introducing the full workflow.
+
+## Two ways to run it
+
+- **GitHub Pages site** (`docs/`): a static, browser-only version. Each visitor enters their own Gemini API key, which stays in their browser and is sent only to Google.
+- **Shiny app** (`app/`): the R version, deployable to shinyapps.io, where the key lives on the server.
+
+Both read the same character content. The files in `app/` are the single source of truth; the Pages deploy workflow copies `app/*.md` and `app/www/*.png` into `docs/content/` and `docs/images/` at build time. To preview the site locally, run `scripts/sync_site.sh` first.
 
 ## Features
 
 - **Interactive Learning**: Submit task descriptions or prompts and get character-specific feedback
-- **Transparency Spectrum**: Sequita assesses tasks on a high-to-low transparency scale with visual indicator
+- **Auditability Assessment**: Sequita tells you whether the method matters or only the result does
 - **Principle-Based Teaching**: Each character draws from a curated set of principles, varying recommendations to expose different dimensions
 - **Cross-Character References**: Characters suggest when to visit other companions for complementary skills
-- **Giscus Discussions**: Per-character discussion threads for community feedback
 
 ## Local Development
 
@@ -51,7 +58,7 @@ The companions are organized into three workflow phases:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/nate-layman/promptulus.git
+   git clone https://github.com/AI4RA/promptulus.git
    cd promptulus
    ```
 
@@ -62,7 +69,7 @@ The companions are organized into three workflow phases:
 
 3. **Set up your environment**
 
-   Create `app/.Renviron`:
+   Copy `app/.Renviron.example` to `app/.Renviron` and add your key:
    ```
    GEMINI_API_KEY=your_actual_api_key_here
    ```
@@ -83,6 +90,8 @@ The companions are organized into three workflow phases:
    shiny::runApp("app")
    ```
 
+See [SETUP_GUIDE.md](SETUP_GUIDE.md) for the full walkthrough, including deployment.
+
 ## Deployment to shinyapps.io
 
 ```r
@@ -95,26 +104,22 @@ See [shinyapps.io](https://www.shinyapps.io/) for account setup. The free tier i
 
 ```
 promptulus/
-├── app/
+├── app/                                   # Shiny app and the source of truth for content
 │   ├── app.R                              # Main Shiny application
-│   ├── sequita_system_prompt.md           # Sequita (transparency assessment)
-│   ├── task_categorization_principles.md  # Transparency principles
-│   ├── task_classification_rubric.md      # Transparency rubric
-│   ├── telosa_system_prompt.md            # Telosa (intent engineering)
-│   ├── intent_engineering_principles.md   # Intent principles
-│   ├── promptulus_system_prompt.md        # Promptulus (prompt engineering)
-│   ├── prompting_principles.md            # Prompting principles
-│   ├── modulus_system_prompt.md           # Modulus (task decomposition)
-│   ├── modularization_principles.md       # Modularization principles
-│   └── www/                               # Character artwork
-│       ├── octopus.png                    # Landing page mascot
-│       ├── squirrel.png, squirrel_gear.png
-│       ├── crab.png, crab_gear.png
-│       ├── turtle.png, turtle_gear.png
-│       └── owl.png, owl_gear.png
+│   ├── <character>_system_prompt.md       # One per character (sequita, modulus, telosa, mnemos,
+│   │                                      #   promptulus, dialogos, vitrea, veridex, clarion)
+│   ├── <topic>_principles.md              # Principles table injected into each system prompt
+│   └── www/                               # Character artwork (web-sized PNGs)
+├── docs/                                  # GitHub Pages site (static, browser-only)
+│   ├── index.html, css/, js/
+│   ├── content/                           # Generated from app/*.md at deploy time (not tracked)
+│   └── images/                            # Generated from app/www at deploy time (not tracked)
+├── design/                                # Full-resolution artwork and GIMP sources
 ├── notes/                                 # Design documentation
-│   ├── AI_literacy_companions.md          # Character roster and design notes
-│   └── ...
+├── scripts/
+│   ├── sync_site.sh                       # Copies app content and images into docs/
+│   └── renv_reinstall.R                   # Helper for rebuilding the renv library
+├── .github/workflows/deploy-pages.yml     # Builds and deploys the Pages site
 ├── renv.lock                              # R dependency lockfile
 └── README.md
 ```
@@ -123,12 +128,12 @@ promptulus/
 
 - **Shiny** + **bslib**: R framework for web applications
 - **ellmer**: R package for LLM interactions (Google Gemini)
-- **Google Gemini**: Free-tier LLM API (Gemini 2.5 Flash)
+- **Google Gemini**: Flash models via the Gemini API. The Pages site uses Gemini 3.8 Flash (set in `docs/js/api.js`); the Shiny app's model is set in `app/app.R`
 - **shinyapps.io**: Hosting with secure environment variables
 
 ## Cost
 
-Uses Google Gemini's free tier: 15 requests/minute, 1,500 requests/day.
+Both versions work with Google's free Gemini API tier. Free-tier limits vary by model and change over time; see [Google's rate limits page](https://ai.google.dev/gemini-api/docs/rate-limits) and your AI Studio dashboard for current numbers.
 
 ## Contributing
 
