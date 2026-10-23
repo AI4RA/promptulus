@@ -1,0 +1,29 @@
+# CORS for the Promptulus GitHub Pages site, which calls MindRouter through this
+# host from the browser. Add inside the site block in /etc/caddy/Caddyfile on
+# nlayman-external, ABOVE the existing `handle @api` block (Caddy evaluates
+# handle blocks in order, and the preflight must be answered before the proxy
+# sees it). Then: sudo systemctl reload caddy
+#
+# Only the Pages origin is allowed. The Office add-in served from this same host
+# is same-origin and needs none of this.
+
+@promptulus_preflight {
+    method OPTIONS
+    path /v1/*
+    header Origin https://ai4ra.github.io
+}
+handle @promptulus_preflight {
+    header Access-Control-Allow-Origin "https://ai4ra.github.io"
+    header Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    header Access-Control-Allow-Headers "Authorization, Content-Type"
+    header Access-Control-Max-Age "600"
+    header Vary "Origin"
+    respond 204
+}
+
+# And add these two lines inside the existing `handle @api { ... }` block,
+# before `reverse_proxy`, so the actual responses carry the header too.
+# The `>` defers the header until the proxied response is written.
+#
+#     header >Access-Control-Allow-Origin "https://ai4ra.github.io"
+#     header >Vary "Origin"
