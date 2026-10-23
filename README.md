@@ -147,6 +147,23 @@ Copyright 2025 Nathan Layman.
 
 Licensed under the [Apache License, Version 2.0](LICENSE). The [NOTICE](NOTICE) file carries four attributions: Nathan Layman as the author, the University of Idaho, the AI4RA project, and the National Science Foundation award that funded the work. Under Section 4(d) of the license, anyone who redistributes this software or a derivative work must keep all four. To cite the project, use [CITATION.cff](CITATION.cff).
 
+## Third-party software
+
+The Pages site loads these open source libraries from public CDNs, and the Shiny app imports these R packages at run time. Each stays under its own license; full notices are in [NOTICE](NOTICE).
+
+| Component | Where | Use | License |
+|---|---|---|---|
+| [Font Awesome Free](https://fontawesome.com) 6.4.0 | Pages site | Icons | Icons CC BY 4.0, fonts SIL OFL 1.1, code MIT |
+| [@google/genai](https://github.com/googleapis/js-genai) | Pages site | Gemini SDK | Apache-2.0 |
+| [shiny](https://github.com/rstudio/shiny) 1.11.1 | Shiny app | Web application framework | GPL-3 |
+| [bslib](https://github.com/rstudio/bslib) 0.9.0 | Shiny app | Bootstrap themes | MIT |
+| [ellmer](https://github.com/tidyverse/ellmer) 0.3.2 | Shiny app | LLM client (Gemini) | MIT |
+| [markdown](https://github.com/rstudio/markdown) 2.0 | Shiny app | Markdown rendering | MIT |
+| [shinyjs](https://github.com/daattali/shinyjs) 2.1.0 | Shiny app | JavaScript helpers | MIT |
+| [here](https://github.com/r-lib/here) 1.0.2 | Shiny app | Project-relative paths | MIT |
+
+The Shiny app is hosted on shinyapps.io and run there; it is not packaged or redistributed with these libraries, so shiny's GPL-3 terms are noted for completeness rather than as a redistribution obligation.
+
 ## Acknowledgments
 
 Promptulus: AI Literacy Companions is a project of [AI4RA](https://github.com/AI4RA) at the University of Idaho. This material is based upon work supported by the National Science Foundation under the GRANTED program, [NSF Award #2427549](https://www.nsf.gov/awardsearch/show-award?AWD_ID=2427549), "Crossing the Innovation Valley of Death: Democratizing Data and Artificial Intelligence for Research Administration." Any opinions, findings, conclusions or recommendations expressed in this material are those of the author and do not necessarily reflect the views of the National Science Foundation.

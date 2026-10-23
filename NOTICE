@@ -24,3 +24,49 @@ The attribution covers the code and also the character designs, the names
 and concepts of the AI literacy companions, and the associated principles
 content.
 
+
+Third-party software
+
+Promptulus depends on the following open source software. Each remains
+under its own license and copyright; none is modified or redistributed by
+this project.
+
+Loaded in the browser by the GitHub Pages site (docs/) from public CDNs:
+
+Font Awesome Free 6.4.0 (icons)
+  Copyright (c) Fonticons, Inc.
+  Icons: CC BY 4.0; fonts: SIL OFL 1.1; code: MIT
+  https://fontawesome.com/license/free
+
+@google/genai (Google Gen AI JavaScript SDK)
+  Copyright 2025 Google LLC
+  Apache License 2.0 - https://github.com/googleapis/js-genai/blob/main/LICENSE
+
+Imported by the Shiny app (app/) at run time; the app is hosted, not
+distributed as a bundle, so these packages are not redistributed here:
+
+shiny 1.11.1 (web application framework)
+  Copyright (c) Posit Software, PBC and the contributors listed in its
+  DESCRIPTION and LICENSE files
+  GPL-3 - https://github.com/rstudio/shiny/blob/main/LICENSE
+
+bslib 0.9.0 (Bootstrap themes for Shiny)
+  Copyright (c) Posit Software, PBC and the contributors listed in its
+  DESCRIPTION and LICENSE files
+  MIT License - https://github.com/rstudio/bslib/blob/main/LICENSE
+
+ellmer 0.3.2 (LLM client, used for Google Gemini)
+  Copyright (c) Posit Software, PBC
+  MIT License - https://github.com/tidyverse/ellmer/blob/main/LICENSE.md
+
+markdown 2.0 (Markdown rendering)
+  Copyright (c) Posit Software, PBC
+  MIT License - https://github.com/rstudio/markdown/blob/master/LICENSE.md
+
+shinyjs 2.1.0 (JavaScript helpers for Shiny)
+  Copyright (c) 2020 Dean Attali
+  MIT License - https://github.com/daattali/shinyjs/blob/master/LICENSE
+
+here 1.0.2 (project-relative file paths)
+  Copyright (c) 2020 here authors
+  MIT License - https://github.com/r-lib/here/blob/main/LICENSE.md
