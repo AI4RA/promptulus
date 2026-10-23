@@ -685,6 +685,25 @@ body {
   color: #2196F3;
 }
 
+/* ===== LANDING FOOTER ===== */
+.landing-footer {
+  margin-top: 40px;
+  padding: 16px 0 24px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  line-height: 1.6;
+}
+
+.landing-footer p {
+  margin: 0 0 6px;
+}
+
+.landing-footer a {
+  color: #2196F3;
+}
+
 .landing-disclaimer {
   margin-top: 30px;
   padding: 15px 20px;
