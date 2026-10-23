@@ -1,5 +1,5 @@
 import { characters, directFeedbackCharacters, getCharactersByPhase } from './characters.js';
-import { initAPI, callGemini, buildSystemPrompt, loadContent } from './api.js';
+import { initAPI, callModel, backendName, buildSystemPrompt, loadContent } from './api.js';
 
 // ===== STATE =====
 let currentCharacter = null;
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   apiKeyInput.addEventListener('input', () => {
     const key = apiKeyInput.value.trim();
     $('api-key-status').innerHTML = key
-      ? '<i class="fa fa-check-circle"></i> Key entered'
+      ? `<i class="fa fa-check-circle"></i> ${backendName(key)} key entered`
       : '';
     if (key) initAPI(key);
   });
@@ -487,7 +487,7 @@ async function handleSend() {
     }
 
     // Call the API
-    const response = await callGemini(
+    const response = await callModel(
       systemPromptCache,
       conversationHistory,
       "Please review this prompt:\n\n" + userPrompt

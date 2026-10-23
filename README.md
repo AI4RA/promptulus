@@ -35,7 +35,7 @@ The companions are organized into three workflow phases:
 
 ## Two ways to run it
 
-- **GitHub Pages site** (`docs/`): a static, browser-only version. Each visitor enters their own Gemini API key, which stays in their browser and is sent only to Google.
+- **GitHub Pages site** (`docs/`): a static, browser-only version. Each visitor enters their own Gemini API key, which stays in their browser and is sent only to Google. Facilitators only: a University of Idaho MindRouter key (prefix `mr2_`) pasted or passed via `?key=...` is routed to the University's own models through the lakehouse proxy instead. The site does not advertise this; mint a workshop-specific MindRouter key and revoke it afterward.
 - **Shiny app** (`app/`): the R version, deployable to shinyapps.io, where the key lives on the server.
 
 Both read the same character content. The files in `app/` are the single source of truth; the Pages deploy workflow copies `app/*.md` and `app/www/*.png` into `docs/content/` and `docs/images/` at build time. To preview the site locally, run `scripts/sync_site.sh` first.
