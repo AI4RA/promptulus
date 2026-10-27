@@ -3,17 +3,25 @@
 ## Getting Your Gemini API Key
 
 ### 1. Visit Google AI Studio
-Go to [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+Go to [https://aistudio.google.com/apikey](https://aistudio.google.com/apikey)
 
 ### 2. Sign in with Google
 Use your Google account to sign in.
 
-### 3. Create API Key
-- Click "Create API Key"
-- Select "Create API key in new project" (or choose an existing project)
-- Copy the generated API key
+### 3. Get your API key
+- New users get a project and an API key created automatically. Copy that key.
+- Otherwise, click "Create API Key" and choose a project with no billing account attached. A project linked to billing is charged at paid rates.
 
-### 4. Keep it secure!
+### 4. Understand the free tier
+The free tier costs nothing and needs no credit card, but it comes with conditions:
+
+- **Billing decides the tier.** A project with no billing account stays on the free tier. Linking a billing account moves it to the paid tier; unlinking it returns the project to the free tier.
+- **Rate limits.** Free keys are limited in requests per minute and per day, and the limits vary by model. See [Google's rate limits page](https://ai.google.dev/gemini-api/docs/rate-limits).
+- **Data use.** On the free tier, Google may use your inputs and the model's responses to improve its products, and human reviewers may read them. Paid usage is not used this way. Do not enter sensitive, confidential, or personal information with a free key.
+- **Eligibility.** The [Gemini API terms](https://ai.google.dev/gemini-api/terms) require users to be 18 or older. Developers who make an app available to users in the EEA, Switzerland, or the UK must use paid services.
+- **Models.** Both versions of the app use free-tier models: the Pages site uses `gemini-3.8-flash` (set in `docs/js/api.js`) and the Shiny app uses `gemini-2.5-flash` (set in `app/app.R`). See [Google's pricing page](https://ai.google.dev/gemini-api/docs/pricing) for which models have a free tier.
+
+### 5. Keep it secure!
 - Never commit your API key to git
 - `.env` and `.Renviron` files are already in `.gitignore` to prevent this
 - Don't share your API key publicly
@@ -145,13 +153,15 @@ To enable it on a fork, open the repository Settings, then Pages, and set the so
 ### Rate limits
 Free-tier limits differ by model and change over time. Check [Google's rate limits page](https://ai.google.dev/gemini-api/docs/rate-limits) and the usage view in AI Studio for the current numbers. If you hit a limit, wait a few minutes and try again, or switch to a model with a higher free-tier allowance.
 
+For workshops, a `?key=` link pre-fills the same key for everyone, so the whole group shares one key's limits and a free key runs out quickly. Have participants create their own keys, or use a key on a project with billing enabled.
+
 ## Security Note
 
 **GitHub Pages site**: runs entirely in the browser. Each visitor enters their own API key, which is kept in that browser session and sent only to Google's Gemini API. No key is stored in the repository or on a server.
 
 **Shiny app**: the key is read from `app/.Renviron` on the server and never reaches the browser.
 
-In both cases, do not enter sensitive, confidential, or personally identifiable information into the characters unless your institution has an agreement with Google that covers it. The inputs are processed by a third-party AI service.
+In both cases, do not enter sensitive, confidential, or personally identifiable information into the characters. The inputs are processed by a third-party AI service, and with a free-tier key Google may use them to improve its products, with human review. An institutional agreement with Google covers only keys issued under that agreement, not personal AI Studio keys.
 
 ## Next Steps
 
