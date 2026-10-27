@@ -16,7 +16,7 @@
     <p>This project is designed to teach you how to <em>think about</em> using AI. Each character highlights an important discipline in the AI workflow.</p>
     <p>The advice from any individual character is educational. It should not be used to make definitive judgments about specific tasks. Always consult your institution's policies and use professional judgment.</p>
     <p><strong>Do not submit sensitive, confidential, or personally identifiable information</strong> unless your institution has an enterprise or data privacy agreement in place with the AI provider. Your inputs are sent to a third-party AI service (Google Gemini, Anthropic Claude, or OpenAI, depending on your key) for processing. When in doubt, use generic or anonymized examples when describing your tasks.</p>
-    <p>This site runs entirely in your browser and has no server or database of its own. Your API key and your conversations are never stored by this site; they are sent only to the AI provider that issued your key.</p>
+    <p><strong>Promptulus stores nothing about your use.</strong> It runs entirely in your browser, with no server or database of its own: your API key, your conversations, and your activity are never saved by Promptulus. Your messages are sent to the AI provider that issued your key, and <strong>that provider may store your conversations</strong> under its own terms.</p>
     <button class="btn-primary" id="dismiss-modal">I understand</button>
   </div>
 </div>
@@ -82,7 +82,7 @@
         <span id="api-key-status"></span>
       </div>
       <p class="api-key-help">
-        <i class="fa fa-lock"></i> This site runs entirely in your browser. It has no server or database, so your key is never stored: it lives only in this tab's memory, is gone when you refresh or close the page, and is sent only to the AI provider that issued it.
+        <i class="fa fa-lock"></i> Promptulus runs entirely in your browser and stores nothing about your use: no key, no conversations, no analytics. Your key lives only in this tab's memory and is gone when you refresh or close the page. Your messages go straight to the AI provider that issued your key, and that provider may store your conversations under its own terms.
       </p>
       <p class="api-key-help">
         Don't have a key? <a href="#" id="open-apikey-help">Click here for instructions on getting a free Gemini API key</a> and what the free tier includes.
