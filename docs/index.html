@@ -15,7 +15,7 @@
     <h2>Welcome to the AI Literacy Companions</h2>
     <p>This project is designed to teach you how to <em>think about</em> using AI. Each character highlights an important discipline in the AI workflow.</p>
     <p>The advice from any individual character is educational. It should not be used to make definitive judgments about specific tasks. Always consult your institution's policies and use professional judgment.</p>
-    <p><strong>Do not submit sensitive, confidential, or personally identifiable information</strong> unless your institution has an enterprise or data privacy agreement in place with Google. Your inputs are sent to a third-party AI service (Google Gemini) for processing. When in doubt, use generic or anonymized examples when describing your tasks.</p>
+    <p><strong>Do not submit sensitive, confidential, or personally identifiable information</strong> unless your institution has an enterprise or data privacy agreement in place with the AI provider. Your inputs are sent to a third-party AI service (Google Gemini, Anthropic Claude, or OpenAI, depending on your key) for processing. When in doubt, use generic or anonymized examples when describing your tasks.</p>
     <button class="btn-primary" id="dismiss-modal">I understand</button>
   </div>
 </div>
@@ -37,7 +37,9 @@
       <li><strong>Your inputs may be reviewed.</strong> On the free tier, Google may use what you type and the responses to improve its products, and human reviewers may read them. Do not enter sensitive, confidential, or personal information.</li>
       <li><strong>Who can use it.</strong> Google's terms require users to be 18 or older, and some regions (including the EU, UK, and Switzerland) have extra restrictions. See the <a href="https://ai.google.dev/gemini-api/terms" target="_blank">Gemini API terms</a>.</li>
     </ul>
-    <p>Your key is stored only in your browser's memory for the current session - it is never saved or sent anywhere except directly to Google's API.</p>
+    <h3>Using a Claude or ChatGPT key instead</h3>
+    <p>You can also paste an <a href="https://console.anthropic.com/settings/keys" target="_blank">Anthropic API key</a> (starts with <code>sk-ant-</code>) or an <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI API key</a> (starts with <code>sk-</code>). The page recognizes the key and sends it only to that company. These are not free: every message is billed to the account that owns the key. Anthropic and OpenAI say they do not train on API inputs by default. A ChatGPT or Claude chat subscription does not include an API key; API keys come from the developer consoles linked above.</p>
+    <p>Your key is stored only in your browser's memory for the current session - it is never saved or sent anywhere except directly to the provider that issued it.</p>
     <p><strong>Workshop facilitators:</strong> You can pre-fill a key by sharing a link with <code>?key=YOUR_KEY</code> appended. The key is stripped from the URL after loading. Everyone using that link shares one key's rate limit, so a free key will run out quickly with a group. Have participants use their own keys, or use a key on a project with billing enabled.</p>
     <button class="btn-primary" id="dismiss-apikey-modal">Got it</button>
   </div>
@@ -73,9 +75,9 @@
 
     <div class="api-key-section">
       <h4>Getting Started</h4>
-      <p>The interactive characters use Google's Gemini API. Enter your API key below to get started.</p>
+      <p>The interactive characters use Google's Gemini API by default. Enter your API key below to get started. Anthropic (Claude) and OpenAI (ChatGPT) API keys also work.</p>
       <div class="api-key-input-row">
-        <input type="password" id="api-key-input" placeholder="Paste your Gemini API key here...">
+        <input type="password" id="api-key-input" placeholder="Paste your Gemini, Claude, or OpenAI API key here...">
         <span id="api-key-status"></span>
       </div>
       <p class="api-key-help">
@@ -95,7 +97,8 @@
       </p>
       <p>
         Icons by <a href="https://fontawesome.com" target="_blank">Font Awesome Free</a> (CC BY 4.0).
-        Gemini calls use the <a href="https://github.com/googleapis/js-genai" target="_blank">Google Gen AI SDK</a> (Apache-2.0).
+        Gemini calls use the <a href="https://github.com/googleapis/js-genai" target="_blank">Google Gen AI SDK</a> (Apache-2.0);
+        Claude calls use the <a href="https://github.com/anthropics/anthropic-sdk-typescript" target="_blank">Anthropic TypeScript SDK</a> (Apache-2.0).
       </p>
     </footer>
   </div>

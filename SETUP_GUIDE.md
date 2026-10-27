@@ -26,6 +26,21 @@ The free tier costs nothing and needs no credit card, but it comes with conditio
 - `.env` and `.Renviron` files are already in `.gitignore` to prevent this
 - Don't share your API key publicly
 
+## Using a Claude or OpenAI Key (Pages site only)
+
+The Pages site also accepts API keys from Anthropic and OpenAI. It picks the backend from the key's prefix, so the key is never sent to a provider it does not belong to:
+
+| Key starts with | Backend | Model (set in `docs/js/api.js`) |
+|---|---|---|
+| `sk-ant-` | Anthropic Claude | `claude-opus-5-5` |
+| `sk-` (other) | OpenAI | `gpt-6-astra` |
+| anything else | Google Gemini | `gemini-3.8-flash` |
+
+- Get an Anthropic key from the [Anthropic Console](https://console.anthropic.com/settings/keys) or an OpenAI key from the [OpenAI platform](https://platform.openai.com/api-keys). A Claude or ChatGPT chat subscription does not include API access.
+- Neither has a free tier. Every message is billed to the account that owns the key, so set a spending limit in the console before a workshop.
+- Both providers say they do not train on API inputs by default.
+- The Shiny app still uses Gemini only.
+
 ## Local Development Setup
 
 ### Quick Start
@@ -129,7 +144,7 @@ rsconnect::deployApp(appDir = "app", appName = "promptulus")
 
 ## GitHub Pages Deployment
 
-The site deploys automatically. A push to `main` that touches `docs/`, `app/*.md`, or `app/www/` runs `.github/workflows/deploy-pages.yml`, which copies the content and artwork from `app/` into `docs/` and publishes the result. No repository secret is needed: visitors supply their own Gemini API key in the browser.
+The site deploys automatically. A push to `main` that touches `docs/`, `app/*.md`, or `app/www/` runs `.github/workflows/deploy-pages.yml`, which copies the content and artwork from `app/` into `docs/` and publishes the result. No repository secret is needed: visitors supply their own API key in the browser.
 
 To enable it on a fork, open the repository Settings, then Pages, and set the source to **GitHub Actions**.
 
@@ -157,7 +172,7 @@ For workshops, a `?key=` link pre-fills the same key for everyone, so the whole 
 
 ## Security Note
 
-**GitHub Pages site**: runs entirely in the browser. Each visitor enters their own API key, which is kept in that browser session and sent only to Google's Gemini API. No key is stored in the repository or on a server.
+**GitHub Pages site**: runs entirely in the browser. Each visitor enters their own API key, which is kept in that browser session and sent only to the provider that issued it (Google, Anthropic, or OpenAI). No key is stored in the repository or on a server.
 
 **Shiny app**: the key is read from `app/.Renviron` on the server and never reaches the browser.
 
