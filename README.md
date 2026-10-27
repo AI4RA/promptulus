@@ -63,9 +63,10 @@ Both read the same character content. The files in `app/` are the single source 
    ```
 
 2. **Get a free Gemini API key**
-   - Visit [Google AI Studio](https://aistudio.google.com/apikey)
-   - Click "Create API Key"
+   - Visit [Google AI Studio](https://aistudio.google.com/apikey) and sign in
+   - New users get a key created automatically; otherwise click "Create API Key" and pick a project with no billing attached
    - Copy your API key
+   - The free tier has rate limits, and Google may use free-tier inputs to improve its products. See [SETUP_GUIDE.md](SETUP_GUIDE.md#4-understand-the-free-tier) before using it with real data
 
 3. **Set up your environment**
 
