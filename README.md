@@ -35,7 +35,7 @@ The companions are organized into three workflow phases:
 
 ## Two ways to run it
 
-- **GitHub Pages site** (`docs/`): a static, browser-only version. Each visitor enters their own Gemini API key, which stays in their browser and is sent only to Google. Facilitators only: a University of Idaho MindRouter key (prefix `mr2_`) pasted or passed via `?key=...` is routed to the University's own models through the lakehouse proxy instead. The site does not advertise this; mint a workshop-specific MindRouter key and revoke it afterward.
+- **GitHub Pages site** (`docs/`): a static, browser-only version. Each visitor enters their own API key, which stays in their browser and is sent only to the provider that issued it. The key's prefix picks the backend: Gemini by default, Anthropic Claude for `sk-ant-` keys, and OpenAI for other `sk-` keys. Facilitators only: a University of Idaho MindRouter key (prefix `mr2_`) pasted or passed via `?key=...` is routed to the University's own models through the lakehouse proxy instead. The site does not advertise this; mint a workshop-specific MindRouter key and revoke it afterward.
 - **Shiny app** (`app/`): the R version, deployable to shinyapps.io, where the key lives on the server.
 
 Both read the same character content. The files in `app/` are the single source of truth; the Pages deploy workflow copies `app/*.md` and `app/www/*.png` into `docs/content/` and `docs/images/` at build time. To preview the site locally, run `scripts/sync_site.sh` first.
@@ -130,11 +130,12 @@ promptulus/
 - **Shiny** + **bslib**: R framework for web applications
 - **ellmer**: R package for LLM interactions (Google Gemini)
 - **Google Gemini**: Flash models via the Gemini API. The Pages site uses Gemini 3.8 Flash (set in `docs/js/api.js`); the Shiny app's model is set in `app/app.R`
+- **Anthropic Claude** and **OpenAI** (Pages site only): used when the visitor's key is from one of them. Models are set in `docs/js/api.js`
 - **shinyapps.io**: Hosting with secure environment variables
 
 ## Cost
 
-Both versions work with Google's free Gemini API tier. Free-tier limits vary by model and change over time; see [Google's rate limits page](https://ai.google.dev/gemini-api/docs/rate-limits) and your AI Studio dashboard for current numbers.
+Both versions work with Google's free Gemini API tier. Anthropic and OpenAI keys on the Pages site have no free tier; each message is billed to the key's owner. Free-tier limits vary by model and change over time; see [Google's rate limits page](https://ai.google.dev/gemini-api/docs/rate-limits) and your AI Studio dashboard for current numbers.
 
 ## Contributing
 
@@ -156,6 +157,7 @@ The Pages site loads these open source libraries from public CDNs, and the Shiny
 |---|---|---|---|
 | [Font Awesome Free](https://fontawesome.com) 6.4.0 | Pages site | Icons | Icons CC BY 4.0, fonts SIL OFL 1.1, code MIT |
 | [@google/genai](https://github.com/googleapis/js-genai) | Pages site | Gemini SDK | Apache-2.0 |
+| [@anthropic-ai/sdk](https://github.com/anthropics/anthropic-sdk-typescript) | Pages site | Claude SDK | Apache-2.0 |
 | [shiny](https://github.com/rstudio/shiny) 1.11.1 | Shiny app | Web application framework | GPL-3 |
 | [bslib](https://github.com/rstudio/bslib) 0.9.0 | Shiny app | Bootstrap themes | MIT |
 | [ellmer](https://github.com/tidyverse/ellmer) 0.3.2 | Shiny app | LLM client (Gemini) | MIT |

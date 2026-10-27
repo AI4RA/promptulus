@@ -453,7 +453,7 @@ async function handleSend() {
 
   const apiKey = $('api-key-input').value.trim();
   if (!apiKey) {
-    setBubbleText("Please enter your Gemini API key on the landing page (click the octopus to go back).");
+    setBubbleText("Please enter your API key on the landing page (click the octopus to go back).");
     return;
   }
 

@@ -42,6 +42,10 @@ Font Awesome Free 6.4.0 (icons)
   Copyright 2025 Google LLC
   Apache License 2.0 - https://github.com/googleapis/js-genai/blob/main/LICENSE
 
+@anthropic-ai/sdk (Anthropic TypeScript SDK)
+  Copyright 2023 Anthropic, PBC.
+  Apache License 2.0 - https://github.com/anthropics/anthropic-sdk-typescript/blob/main/LICENSE
+
 Imported by the Shiny app (app/) at run time; the app is hosted, not
 distributed as a bundle, so these packages are not redistributed here:
 
