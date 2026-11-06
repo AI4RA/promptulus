@@ -1546,7 +1546,7 @@ server <- function(input, output, session) {
           cat(paste0("[LOG] Creating new chat, system prompt length: ", nchar(system_prompt), " characters\n"))
 
           chat_obj <- chat(
-            name = "google_gemini/gemini-2.5-flash",
+            name = "google_gemini/gemini-3.5-flash-lite",
             system_prompt = system_prompt,
             api_key = api_key,
             echo = "none"
