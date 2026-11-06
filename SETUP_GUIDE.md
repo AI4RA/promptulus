@@ -19,7 +19,7 @@ The free tier costs nothing and needs no credit card, but it comes with conditio
 - **Rate limits.** Free keys are limited in requests per minute and per day, and the limits vary by model. See [Google's rate limits page](https://ai.google.dev/gemini-api/docs/rate-limits).
 - **Data use.** On the free tier, Google may use your inputs and the model's responses to improve its products, and human reviewers may read them. Paid usage is not used this way. Do not enter sensitive, confidential, or personal information with a free key.
 - **Eligibility.** The [Gemini API terms](https://ai.google.dev/gemini-api/terms) require users to be 18 or older. Developers who make an app available to users in the EEA, Switzerland, or the UK must use paid services.
-- **Models.** Both versions of the app use free-tier models: the Pages site uses `gemini-3.8-flash` (set in `docs/js/api.js`) and the Shiny app uses `gemini-2.5-flash` (set in `app/app.R`). See [Google's pricing page](https://ai.google.dev/gemini-api/docs/pricing) for which models have a free tier.
+- **Models.** Both versions of the app use the free-tier model `gemini-3.5-flash-lite` (set in `docs/js/api.js` for the Pages site and `app/app.R` for the Shiny app). See [Google's pricing page](https://ai.google.dev/gemini-api/docs/pricing) for which models have a free tier.
 
 ### 5. Keep it secure!
 - Never commit your API key to git
@@ -34,7 +34,7 @@ The Pages site also accepts API keys from Anthropic and OpenAI. It picks the bac
 |---|---|---|
 | `sk-ant-` | Anthropic Claude | `claude-opus-5-5` |
 | `sk-` (other) | OpenAI | `gpt-6-astra` |
-| anything else | Google Gemini | `gemini-3.8-flash` |
+| anything else | Google Gemini | `gemini-3.5-flash-lite` |
 
 - Get an Anthropic key from the [Anthropic Console](https://console.anthropic.com/settings/keys) or an OpenAI key from the [OpenAI platform](https://platform.openai.com/api-keys). A Claude or ChatGPT chat subscription does not include API access.
 - Neither has a free tier. Every message is billed to the account that owns the key, so set a spending limit in the console before a workshop.
