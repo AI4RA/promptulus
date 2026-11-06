@@ -687,6 +687,38 @@ body {
   color: #2196F3;
 }
 
+/* ===== COMMUNITY CALLOUT ===== */
+.community-callout {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  border-left: 5px solid #04354a;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.community-callout .fa {
+  font-size: 24px;
+  color: #04354a;
+}
+
+.community-callout p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.community-callout strong {
+  color: #04354a;
+}
+
+.community-callout a {
+  color: #2196F3;
+}
+
 /* ===== LANDING FOOTER ===== */
 .landing-footer {
   margin-top: 40px;
