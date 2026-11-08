@@ -486,15 +486,17 @@ async function handleSend() {
       conversationHistory = [];
     }
 
-    // Call the API
+    // Call the API. Each character labels the message for what it asks
+    // for (a prompt, a task, a question).
+    const userMessage = (config.messagePrefix || "Please review this prompt:") + "\n\n" + userPrompt;
     const response = await callModel(
       systemPromptCache,
       conversationHistory,
-      "Please review this prompt:\n\n" + userPrompt
+      userMessage
     );
 
     // Update conversation history
-    conversationHistory.push({ role: 'user', text: "Please review this prompt:\n\n" + userPrompt });
+    conversationHistory.push({ role: 'user', text: userMessage });
     conversationHistory.push({ role: 'model', text: response });
 
     // Store Dialogos history
@@ -506,15 +508,12 @@ async function handleSend() {
 
     // Parse Sequita auditability zone
     if (currentCharacter === 'sequita') {
-      const zoneMatch = response.match(/\[AUDITABILITY: (high|low)\]/);
-      let cleanResponse = response;
-      let spectrumHtml = '';
-      if (zoneMatch) {
-        const zone = zoneMatch[1];
-        cleanResponse = response.replace(/\s*\[AUDITABILITY: [^\]]+\]\s*/g, '');
-        spectrumHtml = buildSpectrumHTML(zone);
-      }
-      setBubbleText(cleanResponse + spectrumHtml);
+      // Tolerate case and bold around the tag; always strip it from the text.
+      const zoneMatch = response.match(/\[AUDITABILITY:\s*(high|low)\s*\]/i);
+      const cleanResponse = response.replace(/\s*\**\[AUDITABILITY:[^\]]*\]\**\s*/gi, '');
+      const spectrumHtml = zoneMatch ? buildSpectrumHTML(zoneMatch[1].toLowerCase()) : '';
+      // Append the bar after formatting so its markup gets no stray <br>s.
+      setBubbleHTML(formatResponse(cleanResponse) + spectrumHtml);
     } else {
       setBubbleText(response);
     }

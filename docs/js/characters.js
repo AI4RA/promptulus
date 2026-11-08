@@ -5,13 +5,14 @@ export const characters = {
     displayName: "Sequita (When to Use AI)",
     image: "squirrel.png",
     inputPlaceholder: "Describe a task you're considering using AI for...",
+    messagePrefix: "Here is a task I'm considering using AI for:",
     greeting: "Hello! I am Sequita. Tell me what you're working on and I'll teach you about auditability. Does your task need a clear paper trail, or is a good answer all that matters? Click the arrow to my right for more information.",
     principlesFile: "task_categorization_principles.md",
     systemPromptFile: "sequita_system_prompt.md",
     ratingIcon: "none",
     sidebarTitle: "About Sequita",
     sidebarDescription: `<p>Sequita helps you determine whether <strong>auditability</strong> matters for your task.</p>
-      <p>The key question: <em>Do you need to understand the cause, or just the effect?</em></p>
+      <p>The key question: <em>Will anyone ask how you got there, or only whether you got there?</em></p>
       <p>Think of two tasks on one desk: an auditor will ask exactly how an effort percentage was calculated, but nobody asks how a reference list was formatted, only whether it is correct.</p>
       <p>Type your task description, click Send, and the squirrel will:</p>
       <ul>
@@ -30,6 +31,7 @@ export const characters = {
     displayName: "Modulus (Task Decomposition)",
     image: "crab.png",
     inputPlaceholder: "Paste a complex prompt or describe a multi-step task...",
+    messagePrefix: "Please review this prompt:",
     greeting: "Hello! I am Modulus. Show me your complex prompt and I'll help you break it into manageable, modular pieces! You can also click the arrow to my right for more information.",
     principlesFile: "modularization_principles.md",
     systemPromptFile: "modulus_system_prompt.md",
@@ -54,6 +56,7 @@ export const characters = {
     displayName: "Telosa (Intent Engineering)",
     image: "turtle.png",
     inputPlaceholder: "What are you trying to accomplish with AI? Describe your goal...",
+    messagePrefix: "Here is what I'm trying to accomplish with AI:",
     greeting: "Hello. I am Telosa. Tell me what you're working on and I'll help you think through your intent: what you actually need, who's accountable, and what happens if things don't go as planned. Click the arrow to my right for more information.",
     principlesFile: "intent_engineering_principles.md",
     systemPromptFile: "telosa_system_prompt.md",
@@ -80,13 +83,14 @@ export const characters = {
     displayName: "Mnemos (Context Engineering)",
     image: "elephant.png",
     inputPlaceholder: "Describe your task and what documents or data you plan to give the AI...",
+    messagePrefix: "Here is my task and the material I plan to give the AI:",
     greeting: "Hello! I am Mnemos. Tell me what you're working on and I'll help you think about what information the AI needs, and just as importantly, what to leave out. For example, each character on this site gets the information in their sidebar as context! Click the arrow to my right to see mine.",
     principlesFile: "context_engineering_principles.md",
     systemPromptFile: "mnemos_system_prompt.md",
     ratingIcon: "none",
     sidebarTitle: "About Mnemos",
     sidebarDescription: `<p>Mnemos helps you manage <strong>what information</strong> the AI can see.</p>
-      <p>The key insight: AI's context window is like a desk with limited space. Everything you include competes for attention.</p>
+      <p>The key insight: AI's context window is like a big desk, but everything you put on it competes for the AI's attention.</p>
       <p>Type your task description, click Send, and the elephant will help you think about:</p>
       <ul>
         <li>What information the AI needs that it doesn't already know</li>
@@ -105,6 +109,7 @@ export const characters = {
     displayName: "Promptulus (Prompt Engineering)",
     image: "owl.png",
     inputPlaceholder: "Paste a prompt you'd like reviewed...",
+    messagePrefix: "Please review this prompt:",
     greeting: "Hello! I am Promptulus. Give me your prompt and I'll review it! You can also click the arrow to my right for more information.",
     principlesFile: "prompting_principles.md",
     systemPromptFile: "promptulus_system_prompt.md",
@@ -129,6 +134,7 @@ export const characters = {
     displayName: "Dialogos (Conversation Management)",
     image: "parrot.png",
     inputPlaceholder: "Describe your task and how you plan to interact with the AI (single prompt? back-and-forth?)...",
+    messagePrefix: "Here is my task and how I plan to work with the AI:",
     greeting: "Hello! I am Dialogos. Tell me what you're working on and I'll help you think about managing the back-and-forth: when to continue, when to start fresh, and how to keep the conversation productive. Click the arrow to my right for more information.",
     principlesFile: "conversation_management_principles.md",
     systemPromptFile: "dialogos_system_prompt.md",
@@ -154,6 +160,7 @@ export const characters = {
     displayName: "Vitrea (AI Transparency)",
     image: "frog.png",
     inputPlaceholder: "Ask me how AI models work, where your data goes, why AI makes things up, or anything else you're curious about...",
+    messagePrefix: "My question:",
     greeting: "Hello! I am Vitrea. Ask me about how AI models actually work - tokenization, prediction, where your data goes, why it invents citations, or anything else you're curious about. I'll explain it in plain language. Click the arrow to my right for more information about the topics I can help you with.",
     principlesFile: "ai_transparency_principles.md",
     systemPromptFile: "vitrea_system_prompt.md",
@@ -181,7 +188,8 @@ export const characters = {
     displayName: "Veridex (Evaluation)",
     image: "raccoon.png",
     inputPlaceholder: "Tell me what you're working on or what AI produced for you...",
-    greeting: "Hello! I am Veridex. Tell me what you're working on and I'll help you think about how to measure the accuracy of your AI workflows. Everyone makes mistakes, even humans! We should always know how well our processes are performing. Click the arrow to my right for more information.",
+    messagePrefix: "Here is what I'm working on, or what the AI produced:",
+    greeting: "Hello! I am Veridex. Tell me what you're working on and I'll help you check whether AI output is accurate before you rely on it. Everyone makes mistakes, even humans! We should always know how well our processes are performing. Click the arrow to my right for more information.",
     principlesFile: "evaluation_principles.md",
     systemPromptFile: "veridex_system_prompt.md",
     ratingIcon: "none",
@@ -206,6 +214,7 @@ export const characters = {
     displayName: "Clarion (Reporting)",
     image: "whale.png",
     inputPlaceholder: "Tell me what you're working on or how you used AI...",
+    messagePrefix: "Here is what I'm working on and how I used AI:",
     greeting: "Hello! I am Clarion. Tell me what you're working on and I'll help you think about documenting your AI-assisted work. If you can't explain how you got here well enough for someone to reproduce your work, you're not done yet. Particularly since that someone will probably just end up being you in the future! Click the arrow to my right for more information.",
     principlesFile: "reporting_principles.md",
     systemPromptFile: "clarion_system_prompt.md",
