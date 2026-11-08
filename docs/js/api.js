@@ -214,16 +214,19 @@ export async function loadContent(filename) {
  * @param {string} systemPromptFile - System prompt template filename
  * @param {string} principlesFile - Principles/guidelines filename
  * @param {string} previousPrinciple - Previous principle for direct feedback characters
+ * @param {string} previousScore - Previous score (e.g. "3/5 mice") for direct feedback characters
  * @returns {Promise<string>} The assembled system prompt
  */
-export async function buildSystemPrompt(systemPromptFile, principlesFile, previousPrinciple = 'None') {
+export async function buildSystemPrompt(systemPromptFile, principlesFile, previousPrinciple = 'None', previousScore = 'None') {
   const [template, guidelines] = await Promise.all([
     loadContent(systemPromptFile),
     loadContent(principlesFile)
   ]);
 
   let prompt = template.replace('{{GUIDELINES}}', guidelines);
-  prompt = prompt.replace('{{PREVIOUS_PRINCIPLE}}', previousPrinciple);
+  // Function replacements so a '$' in the value is never treated as a pattern.
+  prompt = prompt.replaceAll('{{PREVIOUS_PRINCIPLE}}', () => previousPrinciple);
+  prompt = prompt.replaceAll('{{PREVIOUS_SCORE}}', () => previousScore);
 
   return prompt;
 }

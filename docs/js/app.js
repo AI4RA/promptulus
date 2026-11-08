@@ -5,6 +5,7 @@ import { initAPI, callModel, backendName, buildSystemPrompt, loadContent } from 
 let currentCharacter = null;
 let conversationHistory = [];  // Array of {role: 'user'|'model', text: string}
 let previousPrinciple = 'None';
+let previousScore = 'None';     // e.g. "3/5 mice", for direct feedback characters
 let systemPromptCache = null;  // Cached system prompt for current character
 let dialogosHistory = [];      // Array of {userInput, response}
 let dialogosViewIndex = 0;     // 0 = live, 1..N = viewing historical turn
@@ -363,6 +364,7 @@ function selectCharacter(charId) {
   currentCharacter = charId;
   conversationHistory = [];
   previousPrinciple = 'None';
+  previousScore = 'None';
   systemPromptCache = null;
   dialogosHistory = [];
   dialogosViewIndex = 0;
@@ -477,7 +479,8 @@ async function handleSend() {
       systemPromptCache = await buildSystemPrompt(
         config.systemPromptFile,
         config.principlesFile,
-        previousPrinciple
+        previousPrinciple,
+        previousScore
       );
     }
 
@@ -523,6 +526,10 @@ async function handleSend() {
       const principleMatch = response.match(/consider using the \*\*([^*]+)\*\*/);
       if (principleMatch) {
         previousPrinciple = principleMatch[1];
+      }
+      const scoreMatch = response.match(/\((\d)\/5 (mice|shrimp)\)/);
+      if (scoreMatch) {
+        previousScore = `${scoreMatch[1]}/5 ${scoreMatch[2]}`;
       }
     }
 
@@ -628,8 +635,11 @@ function setBubbleHTML(html) {
 }
 
 function formatResponse(text) {
+  // Escape first so model output can't inject markup, then allow back only
+  // the <br> tags the prompts ask for, plus **bold**.
+  let html = escapeHTML(text).replace(/&lt;br\s*\/?&gt;/gi, '<br>');
   // Bold: **text** -> <strong>text</strong>
-  let html = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   // Newlines -> <br>
   html = html.replace(/\n/g, '<br>');
   return html;
